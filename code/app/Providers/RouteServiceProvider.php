@@ -39,7 +39,49 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
+        $this->mapStaffRoutes();
+
+        $this->mapCustomerRoutes();
+
         //
+    }
+
+    /**
+     * Define the "customer" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapCustomerRoutes()
+    {
+        Route::group([
+            'middleware' => ['web', 'customer', 'auth:customer'],
+            'prefix' => 'customer',
+            'as' => 'customer.',
+            'namespace' => $this->namespace,
+        ], function ($router) {
+            require base_path('routes/customer.php');
+        });
+    }
+
+    /**
+     * Define the "staff" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapStaffRoutes()
+    {
+        Route::group([
+            'middleware' => ['web', 'staff', 'auth:staff'],
+            'prefix' => 'staff',
+            'as' => 'staff.',
+            'namespace' => $this->namespace,
+        ], function ($router) {
+            require base_path('routes/staff.php');
+        });
     }
 
     /**
