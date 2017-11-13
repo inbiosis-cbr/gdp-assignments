@@ -6,7 +6,8 @@ Route::get('/home', function () {
     $users[] = Auth::guard('customer')->user();
 
     //dd($users);
+    $userType = 'customer';
 
-    return view('customer.home');
+    return view('adminlte.customer.home')
+        ->withUserType($userType);
 })->name('home');
-

@@ -34,7 +34,7 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/staff') }}">
+                <a class="navbar-brand" href="{{ url('/staff/login') }}">
                     {{ config('app.name', 'Laravel Multi Auth Guard') }}: Staff
                 </a>
             </div>
@@ -48,6 +48,8 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
+                    @php
+                    /*
                     @if (Auth::guest())
                         <li><a href="{{ url('/staff/login') }}">Login</a></li>
                         <li><a href="{{ url('/staff/register') }}">Register</a></li>
@@ -72,6 +74,8 @@
                             </ul>
                         </li>
                     @endif
+                    */
+                    @endphp
                 </ul>
             </div>
         </div>
